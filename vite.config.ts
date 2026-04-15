@@ -18,12 +18,6 @@ const config = defineConfig({
 					crawlLinks: false,
 				},
 			},
-			prerender: {
-				enabled: true,
-				autoStaticPathsDiscovery: false,
-				crawlLinks: false,
-			},
-			pages: [{ path: "/" }],
 		}),
 		nitro(),
 		viteReact(),
