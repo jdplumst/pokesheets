@@ -30,6 +30,7 @@ export const Route = createFileRoute("/_authenticated")({
 	},
 	component: AuthenticatedLayout,
 	pendingComponent: LoadingLayout,
+	ssr: false,
 });
 
 function AuthenticatedLayout() {
