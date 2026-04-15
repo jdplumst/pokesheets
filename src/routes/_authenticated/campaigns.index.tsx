@@ -1,4 +1,4 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import z from "zod";
 import { Campaigns } from "#/features/campaigns/pages/campaigns";
 import { campaignsQueryOptions } from "#/features/campaigns/utils/queries";
@@ -12,15 +12,6 @@ const searchSchema = z.object({
 export const Route = createFileRoute("/_authenticated/campaigns/")({
 	validateSearch: searchSchema,
 	component: Campaigns,
-	beforeLoad: ({ search }) => {
-		if (search.code || search.state) {
-			throw redirect({
-				to: "/campaigns",
-				search: {},
-				replace: true,
-			});
-		}
-	},
 	loader: async ({ context: { queryClient } }) => {
 		queryClient.ensureQueryData(campaignsQueryOptions);
 	},
