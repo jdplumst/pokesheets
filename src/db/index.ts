@@ -1,5 +1,14 @@
-import { drizzle } from 'drizzle-orm/better-sqlite3'
+import { config } from "dotenv";
+import { drizzle } from "drizzle-orm/libsql";
+import { env } from "#/env";
 
-import * as schema from './schema.ts'
+config({ path: ".env" }); // or .env.local
 
-export const db = drizzle(process.env.DATABASE_URL!, { schema })
+export const db = drizzle({
+	connection: {
+		url: env.DATABASE_URL,
+		authToken: env.DATABASE_AUTH_TOKEN,
+	},
+});
+
+export type Database = typeof db;
