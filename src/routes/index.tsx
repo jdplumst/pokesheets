@@ -1,5 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
-import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { Button } from "#/components/ui/button";
 import { getContext } from "#/integrations/tanstack-query/root-provider";
 import { authClient } from "#/lib/auth-client";
@@ -38,13 +37,13 @@ function App() {
 			<div className="relative z-10 text-center max-w-4xl mx-auto px-4">
 				<div className="mb-8">
 					<h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-						Primal Sheets
+						PokéSheets
 					</h1>
 					<p className="text-xl text-gray-200 mb-2">
-						Pokemon D&D Campaign Manager
+						Pokémon D&D Campaign Manager
 					</p>
 					<p className="text-lg text-gray-300 max-w-2xl mx-auto">
-						Create and manage Pokemon D&D campaigns, build character sheets, and
+						Create and manage Pokémon D&D campaigns, build character sheets, and
 						embark on epic adventures with your friends.
 					</p>
 				</div>
@@ -73,7 +72,7 @@ function App() {
 					</Button>
 
 					<div className="text-gray-400 text-sm">
-						Join other trainers in epic Pokemon D&D adventures
+						Join other trainers in epic Pokémon D&D adventures
 					</div>
 				</div>
 			</div>
