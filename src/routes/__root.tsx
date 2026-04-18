@@ -28,8 +28,30 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 				content: "width=device-width, initial-scale=1",
 			},
 			{
-				title: "PokeSheets",
+				title: "PokéSheets",
 			},
+			{
+				name: "description",
+				description:
+					"Create and manage Pokémon D&D campaigns, build character sheets, and embark on epic adventures with your friends.",
+			},
+			{ property: "og:title", content: "PokéSheets" },
+			{
+				property: "og:description",
+				content:
+					"Create and manage Pokémon D&D campaigns, build character sheets, and embark on epic adventures with your friends.",
+			},
+			{ property: "og:image", content: "image.png" },
+			{ property: "og:url", content: "https://pokesheets.vercel.app/" },
+			{ name: "twitter:title", content: "PokéSheets" },
+			{
+				name: "twitter:description",
+				content:
+					"Create and manage Pokémon D&D campaigns, build character sheets, and embark on epic adventures with your friends.",
+			},
+			{ name: "twitter:image", content: "image.png" },
+			{ name: "twitter:card", content: "card.png" },
+			{ name: "twitter:url", content: "https://pokesheets.vercel.app/" },
 		],
 		links: [
 			{
@@ -50,7 +72,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 				<HeadContent />
 			</head>
 			<body className="font-sans antialiased [wrap-anywhere] selection:bg-[rgba(79,184,178,0.24)]">
-				<ThemeProvider defaultTheme="dark" storageKey="primal-sheets-ui-theme">
+				<ThemeProvider defaultTheme="dark" storageKey="pokesheets-ui-theme">
 					<Toaster />
 					{children}
 					<TanStackDevtools
