@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
 			return;
 		}
 
-		const session = await queryClient.ensureQueryData(authQueryOptions);
+		const session = await queryClient.fetchQuery(authQueryOptions);
 		if (session?.data?.user?.id)
 			throw redirect({ to: "/campaigns", replace: true });
 		return;
