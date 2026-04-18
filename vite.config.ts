@@ -11,20 +11,20 @@ const config = defineConfig({
 		tailwindcss(),
 		tanstackStart({
 			srcDirectory: "src",
-			spa: {
-				enabled: true,
-				maskPath: "/campaigns",
-				prerender: {
-					outputPath: "/_shell",
-					crawlLinks: false,
-				},
-			},
-			prerender: {
-				enabled: true,
-				autoStaticPathsDiscovery: false,
-				crawlLinks: false,
-			},
-			pages: [{ path: "/" }],
+			// spa: {
+			// 	enabled: true,
+			// 	maskPath: "/campaigns",
+			// 	prerender: {
+			// 		outputPath: "/_shell",
+			// 		crawlLinks: false,
+			// 	},
+			// },
+			// prerender: {
+			// 	enabled: true,
+			// 	autoStaticPathsDiscovery: false,
+			// 	crawlLinks: false,
+			// },
+			// pages: [{ path: "/" }],
 		}),
 		nitro(),
 		viteReact(),
