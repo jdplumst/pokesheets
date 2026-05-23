@@ -2,26 +2,12 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 import { useState } from "react";
 import { Button } from "#/components/ui/button";
 import { Spinner } from "#/components/ui/spinner";
-import { getContext } from "#/integrations/tanstack-query/root-provider";
 import { authClient } from "#/lib/auth-client";
-import { authQueryOptions } from "#/lib/auth-queries";
-import { getServerSession } from "#/lib/auth-server";
 
 export const Route = createFileRoute("/")({
 	component: App,
-	beforeLoad: async () => {
-		const { queryClient } = getContext();
-
-		if (import.meta.env.SSR) {
-			const session = await getServerSession();
-			if (session?.user?.id)
-				throw redirect({ to: "/campaigns", replace: true });
-			return;
-		}
-
-		const session = await queryClient.fetchQuery(authQueryOptions);
-		if (session?.data?.user?.id)
-			throw redirect({ to: "/campaigns", replace: true });
+	beforeLoad: async ({ context }) => {
+		if (context.userId) throw redirect({ to: "/campaigns", replace: true });
 		return;
 	},
 });

@@ -6,24 +6,11 @@ import {
 } from "@tanstack/react-router";
 import { Suspense } from "react";
 import { ErrorBoundary } from "#/components/error-boundary";
-import { getContext } from "#/integrations/tanstack-query/root-provider";
 import { LoadingLayout } from "#/layouts/loading-layout";
-import { authQueryOptions } from "#/lib/auth-queries";
-import { getServerSession } from "#/lib/auth-server";
 
 export const Route = createFileRoute("/_authenticated")({
-	beforeLoad: async () => {
-		const { queryClient } = getContext();
-
-		if (import.meta.env.SSR) {
-			const session = await getServerSession();
-			if (!session?.user?.id) throw redirect({ to: "/", replace: true });
-			return { userId: session.user.id };
-		}
-
-		const session = await queryClient.fetchQuery(authQueryOptions);
-		if (!session?.data?.user?.id) throw redirect({ to: "/", replace: true });
-		return { userId: session.data.user.id };
+	beforeLoad: async ({ context }) => {
+		if (!context.userId) throw redirect({ to: "/", replace: true });
 	},
 	loader: ({ context }) => {
 		return { userId: context.userId };

@@ -8,6 +8,9 @@ import {
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { ThemeProvider } from "#/components/theme-provider";
 import { Toaster } from "#/components/ui/sonner";
+import { getContext } from "#/integrations/tanstack-query/root-provider";
+import { authQueryOptions } from "#/lib/auth-queries";
+import { getServerSession } from "#/lib/auth-server";
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 import appCss from "../styles.css?url";
 
@@ -61,6 +64,17 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 		],
 	}),
 	shellComponent: RootDocument,
+	beforeLoad: async () => {
+		const { queryClient } = getContext();
+
+		if (import.meta.env.SSR) {
+			const session = await getServerSession();
+			return { userId: session?.user.id };
+		}
+
+		const session = await queryClient.fetchQuery(authQueryOptions);
+		return { userId: session?.data?.user.id };
+	},
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
