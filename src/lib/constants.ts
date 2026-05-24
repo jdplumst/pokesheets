@@ -11,3 +11,18 @@ export const QUERY_KEY = {
 		CAMPAIGN_ID: (campaignId: string) => ["campaigns", campaignId],
 	},
 };
+
+export const DEV_USERS = [
+	{
+		id: "dev_user_alice",
+		name: "Alice",
+		email: "alice@example.com",
+		password: "dev-password",
+	},
+	{
+		id: "dev_user_bob",
+		name: "Bob",
+		email: "bob@example.com",
+		password: "dev-password",
+	},
+];
