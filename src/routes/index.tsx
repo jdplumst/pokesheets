@@ -84,6 +84,7 @@ function App() {
 									<ItemActions>
 										<Button
 											variant="default"
+											disabled={loading}
 											onClick={() =>
 												authClient.signIn.email({
 													email: d.email,
