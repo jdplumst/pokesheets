@@ -14,5 +14,8 @@ export const auth = betterAuth({
 			clientSecret: env.DISCORD_CLIENT_SECRET,
 		},
 	},
+	emailAndPassword: {
+		enabled: env.NODE_ENV !== "production",
+	},
 	plugins: [tanstackStartCookies()],
 });
