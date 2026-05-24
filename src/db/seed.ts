@@ -8,8 +8,8 @@ import { auth } from "#/lib/auth";
 import { DEV_USERS } from "#/lib/constants";
 
 async function seed() {
-	if (env.NODE_ENV !== "production") {
-		console.error("cannot run the seed script in this environment");
+	if (env.NODE_ENV === "production") {
+		throw new Error("cannot run the seed script in this environment");
 	}
 
 	for (const devUser of DEV_USERS) {
