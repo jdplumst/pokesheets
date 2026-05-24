@@ -77,17 +77,5 @@
     "typescript": "^5.7.2",
     "vite": "^8.0.0",
     "vitest": "^3.0.5"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "lightningcss",
-      "better-sqlite3"
-    ],
-    "overrides": {
-      "esbuild@<=0.24.2": ">=0.25.0",
-      "postcss@<8.5.10": ">=8.5.10",
-      "@tanstack/start-server-core@<1.167.30": ">=1.167.30"
-    }
   }
 }
